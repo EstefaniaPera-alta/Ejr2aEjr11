@@ -1,0 +1,92 @@
+package ejercicio2ae11;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author FANNY
+ */
+public class Ejercicio2aE11 extends Arbol {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        boolean continuar;
+        int op;
+        Ejercicio2aE11 obj = new Ejercicio2aE11();
+        obj.insertar("Ana",1997);
+        obj.insertar("Roberto",1982);
+        obj.insertar("Fernando", 1981);
+        obj.insertar("Carmen",1970);
+        obj.insertar("Cristal",1993);
+        obj.insertar("Gustavo", 1986);
+        obj.insertar("Martha",1990);
+        obj.insertar("Joselin", 2003);
+        obj.insertar("Ramiro", 2001);
+        obj.insertar("Lalo",2002);
+        obj.insertar("Alicia",2009);
+        obj.insertar("Cesar",2005);
+        
+        
+        System.out.println("********************");
+        System.out.println("Datos ingresados");
+        System.out.println("********************");
+        while (continuar=true)
+        {
+            System.out.println("***********************************");
+            System.out.println("*Operaciones con Árbol Binario*");
+            System.out.println("***********************************");
+            System.out.println("1.¿Quien es la persona mas pequeña y que edad tiene?");
+            System.out.println("2.¿Quien es la persona más grande y que edad tiene?");
+            System.out.println("3.¿Cuantos años de diferencia tiene la persona más grande y la persona más chica?");
+            System.out.println("4.¿Cuantos participantes hay?");
+            System.out.println("5.¿Cuanto es la suma de las edades de los participantes?");
+            System.out.println("6.¿Cual es el promedio de edad de los participantes?");
+            System.out.println("7.Mostrar altura");
+            System.out.println("8.Mostrar en pre-orden");
+            System.out.println("9.Mostrar en in-orden");
+            System.out.println("10.Mostrar post-orden");
+            System.out.println("11.Salir");
+            op = leer.nextInt();
+            
+            switch(op){
+                case 1: 
+                    obj.Menor();
+                    break;
+                case 2: 
+                    obj.mayor();
+                    break;
+                case 3: 
+                    
+                    break;
+                case 4: 
+                    obj.cantidad();
+                    break;
+                case 5: 
+                    break;
+                case 6: 
+                    
+                    break;
+                case 7: System.out.print ("Altura del arbol:");
+                        obj.retornarAltura();
+                    break;
+                case 8: System.out.println("Pre-Orden");
+                        obj.imprimirPre();
+                    break;
+                case 9: System.out.println("In-Orden");
+                        obj.imprimirEntre();
+                    break;
+                case 10: System.out.println("Post-Orden");
+                         obj.imprimirPost ();
+                    break;
+                case 11: 
+                    continuar = false;
+                    break;
+                default: System.out.println("El valor ingresado es incorrecto");
+            }
+        }
+    }
+    
+}
