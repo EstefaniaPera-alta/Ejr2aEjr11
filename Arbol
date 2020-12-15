@@ -1,0 +1,165 @@
+package ejercicio2ae11;
+
+/**
+ *
+ * @author LANIX
+ */
+public class Arbol extends Nodo{
+    
+    int cant;
+    int altura;
+    int menor;
+  public Arbol() 
+  { 
+      raiz=null; 
+      raiz2=null;
+  } 
+    public void insertar (String nombre, int info)
+    { 
+    Nodo nuevo; 
+    nuevo = new Nodo ();
+    Nodo nuev;
+    nuev = new Nodo();
+    nuevo.info = info;
+    nuev.info2 = nombre;
+    nuevo.izq = null; 
+    nuev.izq2 = null;
+    nuevo.der = null;
+    nuev.der2 = null;
+    if (raiz == null)
+    {
+        raiz = nuevo;
+        raiz2 = nuev;
+    }    
+    else { 
+        Nodo anterior = null, reco; 
+        Nodo anterior2 = null, reco2; 
+        reco = raiz;
+        reco2 = raiz2;
+        while (reco != null) 
+        {
+            anterior = reco;
+            anterior2 = reco2;
+            if (info < reco.info)
+            {
+                reco = reco.izq;
+                reco2 = reco2.izq2;
+            }
+            else{ 
+                reco = reco.der;
+                reco2 = reco2.der2;
+            }
+        } 
+        if (info < anterior.info)
+        {
+            anterior.izq = nuevo; 
+            anterior2.izq2 = nuev;
+        }
+        else {
+            anterior.der = nuevo;
+            anterior2.der2 = nuev;
+        } 
+         
+    } 
+}
+   private void retornarAltura (Nodo reco,int nivel) 
+  {
+      if (reco != null) 
+      { 
+          retornarAltura (reco.izq,nivel+1); 
+          if (nivel>altura) 
+              altura=nivel;
+          retornarAltura (reco.der,nivel+1);
+      } 
+  } 
+  public int retornarAltura () 
+  { 
+      altura=0; 
+      retornarAltura (raiz,1); 
+      return altura; 
+  } 
+ 
+  private void imprimirPre (Nodo reco2) 
+{ 
+    if (reco2 != null) 
+    { 
+        System.out.print(reco2.info2 + "|  |"); 
+        imprimirPre (reco2.izq2); 
+        imprimirPre (reco2.der2); 
+    } 
+} 
+public void imprimirPre () 
+{ 
+    imprimirPre (raiz2); 
+    System.out.println(); 
+  
+}
+
+private void imprimirPost (Nodo reco2) 
+{ 
+    if (reco2 != null) 
+    { 
+        imprimirPost (reco2.izq2);
+        imprimirPost (reco2.der2);
+        System.out.print(reco2.info2 + "|  |"); 
+    } 
+} 
+public void imprimirPost () 
+{ 
+    imprimirPost (raiz2); 
+    System.out.println(); 
+}
+private void imprimirEntre (Nodo reco2) 
+{ 
+    if (reco2 != null) { 
+        imprimirEntre (reco2.izq2);
+        System.out.print(reco2.info2 + "|  |"); 
+        imprimirEntre (reco2.der2); 
+    } 
+} 
+public void imprimirEntre () 
+{ 
+    imprimirEntre (raiz2); 
+    System.out.println(); 
+} 
+
+public void mayor() {
+        if (raiz!=null) {
+            Nodo reco=raiz;
+            while (reco.der!=null)
+                reco=reco.der;
+            System.out.println("Mayor valor del árbol:"+reco.info);
+        }
+    }
+
+public void Menor() {
+        if (raiz!=null) {
+            if (raiz.izq==null)
+                raiz=raiz.der;
+            else {
+                Nodo reco=raiz.izq;
+                while (reco.izq!=null) {
+                    menor = reco.info;
+                    
+                  //  reco=reco.izq;
+               }
+                System.out.println("Menor: "+menor);
+                //atras.izq=reco.der;
+            }                  
+        }
+    }
+
+private void cantidad(Nodo reco) {
+        if (reco!=null) {
+            cant++;
+            cantidad(reco.izq);
+            cantidad(reco.der);
+        }
+    }
+    
+    public int cantidad() {
+        cant=0;
+        cantidad(raiz);
+        return cant;
+    }
+}
