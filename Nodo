@@ -1,0 +1,16 @@
+package ejercicio2ae11;
+
+/**
+ *
+ * @author LANIX
+ */
+public class Nodo{
+    int info;
+    Nodo izq, der;
+    Nodo raiz;
+    
+    String info2;
+    Nodo izq2, der2;
+    Nodo raiz2;
+    
+}
